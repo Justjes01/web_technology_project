@@ -1,59 +1,66 @@
 function submitQuiz() {
-    var score = 0;
-    var totalQuestions = 5;
-    var answers = {
-        q1: "1", // Correct answer for question 1
-        q2: "2", // Correct answer for question 2
-        q3: ["1", "2"], // Correct answers for question 3
-        q4: "Cascading Style Sheets", // Correct answer for fill-in-the-blank question
-        q5: "1" // Correct answer for question 5
+    const form = document.forms["quizForm"];
+    let score = 0;
+    const total = 5;
+  
+    const correctAnswers = {
+      q1: "1", // HTML
+      q2: "2", // CSS
+      q3: "3", // <p>
+      q4: "cascading style sheets",
+      q5: ["1", "2", "4"] // Valid CSS properties
     };
-    var form = document.forms["quizForm"];
-
-    // Check answers for question 1
-    if (form["q1"].value === answers.q1) {
-        score++;
-    }
-
-    // Check answers for question 2
-    if (form["q2"].value === answers.q2) {
-        score++;
-    }
-
-    // Check answers for question 3
-    var q3Answers = form["q3"];
-    var q3Score = 0;
-    for (var i = 0; i < q3Answers.length; i++) {
-        if (q3Answers[i].checked && answers.q3.includes(q3Answers[i].value)) {
-            q3Score++;
-        }
-    }
-    if (q3Score === answers.q3.length) {
-        score++;
-    }
-
-    // Check answer for question 4
-    if (form["q4"].value.trim().toLowerCase() === answers.q4.toLowerCase()) {
-        score++;
-    }
-
-    // Check answer for question 5
-    if (form["q5"].value === answers.q5) {
-        score++;
-    }
-
-    // Display the results
-    var result = document.getElementById("result");
-    result.innerHTML = "<h3>Your Score: " + score + " / " + totalQuestions + "</h3>";
-
-    if (score === totalQuestions) {
-        result.innerHTML += "<p>Congratulations! You passed the quiz!</p>";
-    } else {
-        result.innerHTML += "<p>Try again to improve your score.</p>";
-    }
-}
-
-function resetQuiz() {
+  
+    const resultDiv = document.getElementById("result");
+    resultDiv.innerHTML = "<h3>Quiz Results:</h3>";
+  
+    // Question 1
+    let userQ1 = form["q1"].value;
+    if (userQ1 === correctAnswers.q1) score++;
+    resultDiv.innerHTML += `<p>1. Your answer: ${getOptionText("q1", userQ1)}<br>Correct: ${getOptionText("q1", correctAnswers.q1)}</p>`;
+  
+    // Question 2
+    let userQ2 = form["q2"].value;
+    if (userQ2 === correctAnswers.q2) score++;
+    resultDiv.innerHTML += `<p>2. Your answer: ${getOptionText("q2", userQ2)}<br>Correct: ${getOptionText("q2", correctAnswers.q2)}</p>`;
+  
+    // Question 3
+    let userQ3 = form["q3"].value;
+    if (userQ3 === correctAnswers.q3) score++;
+    resultDiv.innerHTML += `<p>3. Your answer: ${getOptionText("q3", userQ3)}<br>Correct: ${getOptionText("q3", correctAnswers.q3)}</p>`;
+  
+    // Question 4
+    let userQ4 = form["q4"].value.trim().toLowerCase();
+    if (userQ4 === correctAnswers.q4) score++;
+    resultDiv.innerHTML += `<p>4. Your answer: ${userQ4}<br>Correct: ${correctAnswers.q4}</p>`;
+  
+    // Question 5
+    let userQ5 = [];
+    const checkboxes = document.querySelectorAll("input[name='q5']:checked");
+    checkboxes.forEach((box) => userQ5.push(box.value));
+  
+    const isQ5Correct = userQ5.length === correctAnswers.q5.length &&
+                        userQ5.every(val => correctAnswers.q5.includes(val));
+    if (isQ5Correct) score++;
+  
+    resultDiv.innerHTML += `<p>5. Your answers: ${userQ5.join(", ")}<br>Correct: ${correctAnswers.q5.join(", ")}</p>`;
+  
+    resultDiv.innerHTML += `<h3>Your Score: ${score} / ${total}</h3>`;
+    resultDiv.innerHTML += `<p>${score >= 3 ? "✅ You passed!" : "❌ You did not pass. Try again!"}</p>`;
+  }
+  
+  function resetQuiz() {
     document.getElementById("quizForm").reset();
     document.getElementById("result").innerHTML = "";
-}
+  }
+  
+  function getOptionText(name, value) {
+    const options = document.querySelectorAll(`input[name='${name}']`);
+    for (let option of options) {
+      if (option.value === value) {
+        return option.parentElement.textContent.trim();
+      }
+    }
+    return "(No answer)";
+  }
+  
