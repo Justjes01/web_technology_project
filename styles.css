@@ -21,23 +21,33 @@ header {
     text-align: center;
 }
 
+/* Always-visible navigation styling */
 nav ul {
     list-style: none;
     padding: 0;
+    margin: 10px 0 0 0;
     display: flex;
     justify-content: center;
     gap: 20px;
+    flex-wrap: wrap;
 }
 
-.nav-link {
+nav ul li {
+    display: inline;
+}
+
+nav ul li a {
     color: white;
     text-decoration: none;
     font-weight: bold;
+    padding: 8px 16px;
+    border-radius: 4px;
+    transition: background-color 0.3s;
 }
 
-.nav-link:hover {
-    text-decoration: underline;
-    color: #ffcc00;
+nav ul li a:hover {
+    background-color: #ffcc00;
+    color: #003366;
 }
 
 /* Main content styling */
