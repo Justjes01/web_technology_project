@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz - Web Technology Project</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<header>
+    <h1>Web Technology Project</h1>
+    <nav>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="topic1.html">Topic 1</a></li>
+            <li><a href="topic2.html">Topic 2</a></li>
+            <li><a href="resources.html">Resources</a></li>
+            <li><a href="quiz.html">Quiz</a></li> <!-- Add this! -->
+        </ul>
+    </nav>
+</header>
+
+
+<main class="container">
+    <section>
+        <h2>Web Technology Quiz</h2>
+        <form id="quizForm" name="quizForm">
+            <div class="question">
+                <p>1. What does HTML stand for?</p>
+                <label><input type="radio" name="q1" value="1"> Hyper Text Markup Language</label><br>
+                <label><input type="radio" name="q1" value="2"> Home Text Markup Language</label><br>
+                <label><input type="radio" name="q1" value="3"> Hyperlinks and Text Markup Language</label><br>
+            </div>
+            <div class="question">
+                <p>2. What is the main purpose of CSS?</p>
+                <label><input type="radio" name="q2" value="1"> Structure the web page</label><br>
+                <label><input type="radio" name="q2" value="2"> Style and format the web page</label><br>
+                <label><input type="radio" name="q2" value="3"> Provide interaction on the page</label><br>
+            </div>
+            <div class="question">
+                <p>3. Which of the following are valid CSS properties? (Select all that apply)</p>
+                <label><input type="checkbox" name="q3" value="1"> color</label><br>
+                <label><input type="checkbox" name="q3" value="2"> font-size</label><br>
+                <label><input type="checkbox" name="q3" value="3"> javascript</label><br>
+            </div>
+            <div class="question">
+                <p>4. Fill in the blank: CSS stands for ________________.</p>
+                <input type="text" id="q4" name="q4"><br>
+            </div>
+            <div class="question">
+                <p>5. Which tag is used to define the largest heading in HTML?</p>
+                <label><input type="radio" name="q5" value="1"> <code>&lt;h1&gt;</code></label><br>
+                <label><input type="radio" name="q5" value="2"> <code>&lt;h2&gt;</code></label><br>
+                <label><input type="radio" name="q5" value="3"> <code>&lt;h3&gt;</code></label><br>
+            </div>
+            <br>
+            <button type="button" onclick="submitQuiz()">Submit Quiz</button>
+            <button type="button" onclick="resetQuiz()">Reset Quiz</button>
+        </form>
+
+        <div id="result"></div>
+    </section>
+</main>
+
+<footer>
+    <div class="container">
+        <p>&copy; 2025 Your Name. All rights reserved.</p>
+    </div>
+</footer>
+
+<script src="quiz.js"></script>
+</body>
+</html>

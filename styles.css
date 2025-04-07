@@ -1,42 +1,76 @@
+/* General body styles */
 body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
-    background-color: #f4f4f4;
+    background-color: #f5f5f5;
+    color: #333;
 }
 
+.container {
+    width: 90%;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+/* Header styling */
 header {
-    background-color: #333;
+    background-color: #003366;
     color: white;
-    padding: 10px 0;
+    padding: 20px 0;
     text-align: center;
 }
 
 nav ul {
     list-style: none;
     padding: 0;
-    text-align: center;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
 }
 
-nav ul li {
-    display: inline;
-    margin-right: 20px;
-}
-
-nav ul li a {
+.nav-link {
     color: white;
     text-decoration: none;
     font-weight: bold;
 }
 
-nav ul li a:hover {
-    color: #f4f4f4;
+.nav-link:hover {
+    text-decoration: underline;
+    color: #ffcc00;
 }
 
+/* Main content styling */
 main {
-    padding: 20px;
+    padding: 40px 20px;
+    background-color: white;
+    margin: 20px auto;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
 }
 
 h2 {
-    color: #333;
+    color: #003366;
+}
+
+/* Footer styling */
+footer {
+    background-color: #003366;
+    color: white;
+    text-align: center;
+    padding: 15px 0;
+    margin-top: 40px;
+}
+
+ul {
+    padding-left: 20px;
+}
+
+ul li a {
+    text-decoration: none;
+    color: #003366;
+}
+
+ul li a:hover {
+    color: #ffcc00;
 }
